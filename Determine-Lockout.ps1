@@ -18,12 +18,12 @@
   Creation Date:  21-02-2017
   Purpose/Change: Initial script development
 .EXAMPLE
-    .\Determine-AccountLockouts.ps1 -DCs "SRVADC11","SRVADC12" -NumberOfDays 5
+    .\Determine-AccountLockouts.ps1 -DCs "DC11","DC12" -NumberOfDays 5
 #>
 #-----------------------------------------------------------[Execution]------------------------------------------------------------
 Param(
     [Parameter(Mandatory=$True)] # List domain controllers that need to be investigated
-    [array]$DCs, # "SRVADC11","SRVADC12"
+    [array]$DCs, 
 
     [Parameter(Mandatory=$True)] # Enter the number of days to search for. (5 for searching logs for events of the last five days)
     [int]$NumberOfDays # 5
@@ -48,7 +48,7 @@ $EventArray = @()
     }
     Write-Output "Display all Locked events from [$StartTime] to [$Today].."
     $EventArray | Sort-Object TimeCreated | Select-Object TimeCreated, UserName, ClientName
-# Determine-LockoutFunction -DCs "SRVADC11,SRVADC12" -Username * -History $NumberOfDays
+
 
 
 
